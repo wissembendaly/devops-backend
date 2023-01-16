@@ -30,7 +30,7 @@ export class BaseService<Schema extends Base> {
     populate: string | object | null = null
   ): Promise<Schema[]> {
     if (populate !== null) {
-      return this.model.find(filter, projection).populate(populate).exec();
+      return this.model.find(filter, projection).populate(populate as string).exec();
     }
     return this.model.find(filter, projection).exec();
   }
